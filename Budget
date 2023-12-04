@@ -1,0 +1,18 @@
+budget = float(input("Please enter budget of the month: "))
+total_expenses = 0 #set total expenses to zero first
+while True: # using while loop to ask user to enter expense and exception if user enter other than numbers
+  try:
+    expense = float(input("Please enter an expense:  "))
+    total_expenses +=expense
+  except ValueError:
+    print("Invalid input.  Please enter a valid amount.")
+  more = input("Do you have more expenses? Enter Y or N: ")
+  if more.lower() == 'n':
+      break
+
+variance = budget - total_expenses
+
+if variance <0:
+  print(f"You are overbudget by ${-variance:.2f} ")
+else:
+  print(f"You are underbudget by ${variance:.2f}")
