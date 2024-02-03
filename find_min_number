@@ -1,0 +1,39 @@
+# O(n^2) time complexity
+def min_quadratic(num_list):
+    min_num = num_list[0]  # Initialize min_num with the first element
+
+    for i in range(len(num_list)):
+        for j in range(len(num_list)):
+            if num_list[j] < min_num:
+                min_num = num_list[j]
+
+    return min_num
+
+def min_linear(num_list):
+    min_num =min(num_list)
+    return min_num
+
+# alternative with O(n) time complexity
+def alternative_min_linear(num_list):
+
+    min_num = num_list[0]  # Initialize min_num with the first element
+
+    for a in num_list:
+        if a < min_num:
+            min_num = a
+
+    return min_num
+
+# List of numbers
+num_list = [7, 2, 3, 4, 5, 6]
+
+# Test the functions
+result_quadratic = min_quadratic(num_list)
+result_linear = min_linear(num_list)
+result_alternative= alternative_min_linear(num_list)
+
+
+# Print the results
+print(f"Minimum number for (O(n^2)): {result_quadratic}")
+print(f"Minimum number for (O(n)): {result_linear}")
+print(f"Minimum number for (O(n)): {result_alternative}")
