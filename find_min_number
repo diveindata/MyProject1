@@ -37,4 +37,10 @@ result_alternative= alternative_min_linear(num_list)
 print(f"Minimum number for (O(n^2)): {result_quadratic}")
 print(f"Minimum number for (O(n)): {result_linear}")
 print(f"Minimum number for (O(n)): {result_alternative}")
+"""
+Output:
+Minimum number for (O(n^2)): 2
+Minimum number for (O(n)): 2
+Minimum number for (O(n)): 2
+"""
 
