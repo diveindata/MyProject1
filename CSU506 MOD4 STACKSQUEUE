@@ -1,0 +1,24 @@
+class SimpleQueue:
+    def __init__(self):# create two empty stacks
+        self.stack1=[]
+        self.stack2=[]
+        
+    def enqueue(self, name): # push name at the end of the list
+        self.stack1.append(name)
+        
+    def dequeue(self):
+        if not self.stack2:#check if stack2 is empty
+            while self.stack1:# if empty, transfer all the names from stack1 to stack2 LIFO
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop() if self.stack2 else None#pop the oldest name first (FIFO)
+#Creating an instance of SimpleQueue
+queue=SimpleQueue()
+
+#Enqueue names
+queue.enqueue("John")
+queue.enqueue("Miki")
+queue.enqueue("Lisa")
+#Dequeue operation
+print(queue.dequeue())
+print(queue.dequeue())
+print(queue.dequeue())
