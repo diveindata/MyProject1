@@ -1,0 +1,37 @@
+hash_data = {} # Create an empty hash table (dictionary)
+
+print("Hash Table Data: ")
+# Insert key-value pairs
+hash_data[12345] = "John Smith"
+hash_data[67890] = "Jane Doe"
+hash_data[54321] = "Alice Johnson"
+hash_data[98765] = "Bob Williams"
+hash_data[24680] = "Eve Brown"
+hash_data[13579] = "Charlie Davis"
+hash_data[11223] = "Grace Wilson"
+hash_data[44556] = "David Lee"
+hash_data[99999] = "Olivia Martinez"
+hash_data[77777] = "Sophia Anderson"
+
+for key, value in hash_data.items():#iterate and print the hash table
+    print(f"Key: {key}, Value: {hash_data.get(key)}")
+
+print("\nDictionary:")
+#Dictionary key-value pairs
+
+student = {
+(12345, "John Smith"),
+(67890, "Jane Doe"),
+(54321, "Alice Johnson"),
+(98765, "Bob Williams"),
+(24680, "Eve Brown"),
+(13579, "Charlie Davis"),
+(11223, "Grace Wilson"),
+(44556, "David Lee"),
+(99999, "Olivia Martinez"),
+(77777, "Sophia Anderson")}
+print(student)
+
+print("\nSet of student ID: ")
+id_set = { 12345, 67890, 54321, 98765, 24680, 13579, 11223, 44556, 99999, 77777}
+print(id_set)
