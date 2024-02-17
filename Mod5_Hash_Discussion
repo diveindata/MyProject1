@@ -1,0 +1,21 @@
+TABLE_LEN  = 10 # Determine the size of the initial hash table of 10 slots
+hash_table = [None]*TABLE_LEN
+keys = [(12345, "John Smith"),(67890, "Jane Doe"),(54321, "Alice Johnson"),
+(98765, "Bob Williams"),(24680, "Eve Brown"),(13579, "Charlie Davis"),
+(11223, "Grace Wilson"),(44556, "David Lee"),(99999, "Olivia Martinez"),
+(77777, "Sophia Anderson")]
+
+def my_hash_function(key, TABLE_LEN): # hash function to calculate the index position
+    return len(key) % TABLE_LEN #for example (12345,"John Smith") remainder of 2%10=2
+for key in keys:
+    index = my_hash_function(key, TABLE_LEN)#
+    while hash_table[index] is not None: # index 2 is none != none so False
+        index = (index + 1) % TABLE_LEN # Linear probing move to the next available slot
+    if hash_table[index] is None:
+        hash_table[index] = [key] # insert index 2 if it is none
+print("Hash Table:")
+for key, slot in enumerate(hash_table):
+    if slot is None:
+        print(f"Index {key}: Empty")#print Empty if index position is None
+    else:
+        print(f"Index {key}: {slot}")
