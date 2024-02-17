@@ -1,0 +1,40 @@
+ORIGINAL_SIZE = 10 # Determine the size of the initial hash table of 10 slots
+keys = ["Bob", "Abbey", "Alvin", "Iris", "Vincent", "Pamela", "James", "Richard", "Jessica", "John"]
+def my_hash_function(key, table_len): # hash function to calculate the index position
+    return len(key) % table_len #for example Bob remainder of 3%10=3
+
+def rehash(hash_table): # function to rehash the table for larger size
+    global TABLE_LEN # get the originial table size
+    TABLE_LEN *= 2  # Double the table size
+    new_hash_table = [None] * TABLE_LEN # create a new hash table to 20 slots
+    for i in hash_table: # hash table ["Richard"],["Jessica"], ["John"],["Bob"]..
+        if i is not None:
+            for key in i:
+                index = my_hash_function(key, TABLE_LEN)# ('Richard', 20) then 7%20=7
+                while new_hash_table[index] is not None: # Richard in index 7, None is not None = False so insert the key
+                    index = (index + 1) % TABLE_LEN  # Linear probing in rehashing table
+                new_hash_table[index] = [key]# insert Richard in index 7 in new hash table
+    return new_hash_table
+
+# Create an empty hash table
+TABLE_LEN = ORIGINAL_SIZE # 10
+hash_table = [None] * TABLE_LEN
+
+# Insert each key into the hash table
+for y in keys:
+    index = my_hash_function(y, TABLE_LEN)# Bob, 10
+    while hash_table[index] is not None: # while index 3, none != none so False
+        index = (index + 1) % TABLE_LEN  # Linear probing move to the next available slot
+    if hash_table[index] is None: #index 3 is none = none so True
+        hash_table[index] = [y] # insert Bob into index 3 if it is none
+
+    # Check for rehashing
+    if None not in hash_table: # none is in hash table  so false no need to rehash
+        hash_table = rehash(hash_table)# John needs to be rehashed since it is True
+
+print("Hash Table with index and keys:")
+for k, i in enumerate(hash_table):#([None, None, None, ["Bob"], ["John"],["Iris"], ['Abbey'],["Richard"]...])
+    if i is None: # if 0 index is None which is true here then print empty
+        print(f"Index {k}: Empty")
+    else:
+        print(f"Index {k}: {i}")
