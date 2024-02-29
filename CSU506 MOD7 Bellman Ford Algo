@@ -1,0 +1,19 @@
+graph = [ # list of edges in the graph (source, target, weight)
+(3, 2, -10),(4, 3, 3),(1, 4, 5),(1, 2, 4)]
+vertices = 4 # Number of vertices
+source = 1 # Source vertex
+
+distance = [float('infinity')] * (vertices + 1) # set infinity from source to all vertices
+# distance = [inf,inf,inf,inf,inf]
+distance[source] = 0 # set source to 0 distance=[inf,0,inf,inf,inf]
+
+for i in range(vertices - 1): # Relax edges repeatedly for 3 times
+    for s, t, w in graph: #(source, target, weight)
+        if distance[s] + w < distance[t]:#inf+-10<inf = false
+            #inf+3<inf=false
+            #0+5<inf = true then 0+5=5
+            distance[t] = distance[s] + w
+print("Bellman-Ford Algorithm")
+print("Vertex: Distance from Source") # Print the shortest distances
+for vertex in range(1, vertices + 1):
+    print(f"{vertex}: \t\t{distance[vertex]}")
