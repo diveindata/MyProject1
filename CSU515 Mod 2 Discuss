@@ -1,0 +1,11 @@
+import cv2
+
+img = cv2.imread('USbill2.jpg', cv2.IMREAD_GRAYSCALE) # Load the image and turn to grayscale
+
+gau_img = cv2.GaussianBlur(img, (5, 5), 0) # Apply Gaussian blur to reduce noise
+
+canny = cv2.Canny(gau_img, threshold1=40, threshold2=100) # Apply Canny edge detection
+
+cv2.imshow('Original Image', img) # Display the original and edge-detected images
+cv2.imshow('Edges', canny)
+cv2.waitKey(0)
